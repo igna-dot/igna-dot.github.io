@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil Profesional</title>
+    <title>Profil Eksklusif & Profesional</title>
     <!-- Google Fonts & Font Awesome Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -13,235 +13,324 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
         body {
-            background: #f4f6f9;
-            color: #333;
+            /* Latar belakang gradasi premium yang elegan */
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            color: #f8fafc;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px;
+            padding: 30px 20px;
+            overflow-x: hidden;
         }
 
-        /* Card Container */
-        .profile-card {
-            background: #ffffff;
+        /* Dekorasi Lingkaran Cahaya di Latar Belakang */
+        .bg-glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(0,0,0,0) 70%);
+            top: 10%;
+            left: 15%;
+            z-index: 1;
+        }
+        .bg-glow-2 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, rgba(0,0,0,0) 70%);
+            bottom: 10%;
+            right: 15%;
+            z-index: 1;
+        }
+
+        /* Card Utama (Glassmorphism) */
+        .profile-container {
+            position: relative;
+            z-index: 2;
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             width: 100%;
-            max-width: 450px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            max-width: 480px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 
+                        inset 0 1px 1px rgba(255, 255, 255, 0.1);
             overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .profile-container:hover {
+            transform: translateY(-8px);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.4), 
+                        0 0 30px rgba(212, 175, 55, 0.1);
+        }
+
+        /* Bagian Atas / Cover */
+        .cover-photo {
+            height: 120px;
+            background: linear-gradient(90deg, #1e3a8a 0%, #0d9488 100%);
             position: relative;
-            transition: transform 0.3s ease;
         }
 
-        .profile-card:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Header / Banner Background */
-        .card-header {
-            height: 140px;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            position: relative;
-        }
-
-        /* Profile Image Slot */
-        .profile-img-container {
-            width: 130px;
-            height: 130px;
+        /* Foto Profil Lingkaran */
+        .avatar-wrapper {
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            background: #fff;
-            padding: 5px;
+            background: rgba(30, 41, 59, 1);
             position: absolute;
             left: 50%;
-            bottom: -65px;
+            bottom: -60px;
             transform: translateX(-50%);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 4px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
-        .profile-img-slot {
+        .avatar-slot {
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background: #e2e8f0;
+            background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #a0aec0;
+            color: #94a3b8;
+            border: 2px solid #d4af37; /* Aksen Emas/Gold */
             overflow: hidden;
         }
 
-        .profile-img-slot i {
-            font-size: 3.5rem;
+        .avatar-slot i {
+            font-size: 3rem;
         }
 
-        /* Gambar Avatar default jika ada file foto (ganti 'foto-profil.jpg' dengan file Anda) */
-        .profile-img-slot img {
+        .avatar-slot img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: none; /* Ubah ke block jika file foto sudah siap */
+            display: none; /* Aktifkan (block) jika file gambar sudah dimasukkan */
         }
 
-        /* Content Area */
-        .card-content {
-            padding: 85px 30px 40px 30px;
+        /* Konten */
+        .content-body {
+            padding: 80px 35px 40px 35px;
             text-align: center;
         }
 
-        .profile-name {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #1a202c;
-            margin-bottom: 5px;
+        .name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
         }
 
-        .profile-title {
-            font-size: 0.9rem;
-            color: #718096;
-            font-weight: 500;
+        .badge-title {
+            display: inline-block;
+            padding: 5px 14px;
+            background: rgba(212, 175, 55, 0.1);
+            color: #d4af37;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
             letter-spacing: 0.5px;
             margin-bottom: 20px;
         }
 
-        .profile-bio {
-            font-size: 0.88rem;
-            color: #4a5568;
+        .bio {
+            font-size: 0.9rem;
+            color: #94a3b8;
             line-height: 1.6;
-            margin-bottom: 25px;
+            margin-bottom: 28px;
         }
 
-        /* Info Details List */
-        .info-list {
-            text-align: left;
-            background: #f8fafc;
-            padding: 15px 20px;
-            border-radius: 12px;
+        /* Data Diri Grid Elegan */
+        .info-grid {
+            background: rgba(15, 23, 42, 0.4);
+            border-radius: 16px;
+            padding: 20px;
             margin-bottom: 30px;
-            border: 1px solid #edf2f7;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            text-align: left;
         }
 
-        .info-item {
+        .info-row {
             display: flex;
             align-items: center;
-            margin-bottom: 12px;
-            font-size: 0.85rem;
-            color: #4a5568;
+            margin-bottom: 15px;
         }
 
-        .info-item:last-child {
+        .info-row:last-child {
             margin-bottom: 0;
         }
 
-        .info-item i {
-            width: 25px;
-            color: #2a5298;
-            font-size: 1rem;
-            margin-right: 10px;
-        }
-
-        .info-item span {
-            font-weight: 500;
-            color: #2d3748;
-        }
-
-        /* Social Media Buttons */
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .social-btn {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: #f1f5f9;
-            color: #334155;
+        .info-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
             display: flex;
             justify-content: center;
             align-items: center;
+            color: #d4af37;
+            margin-right: 15px;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .info-text p {
+            font-size: 0.75rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-text h4 {
+            font-size: 0.9rem;
+            color: #e2e8f0;
+            font-weight: 500;
+        }
+
+        /* Komponen Media Sosial Tradisional & Modern */
+        .social-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .social-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 14px 0;
+            border-radius: 14px;
+            color: #cbd5e1;
             text-decoration: none;
-            font-size: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            font-weight: 500;
             transition: all 0.3s ease;
-            border: 1px solid #e2e8f0;
         }
 
-        /* Hover Effects */
-        .social-btn:hover {
-            color: #ffffff;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        .social-card i {
+            font-size: 1.3rem;
+            transition: transform 0.3s ease;
         }
 
-        .social-btn.linkedin:hover { background-color: #0077b5; border-color: #0077b5; }
-        .social-btn.instagram:hover { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); border-color: transparent; }
-        .social-btn.whatsapp:hover { background-color: #25d366; border-color: #25d366; }
-        .social-btn.email:hover { background-color: #ea4335; border-color: #ea4335; }
+        /* Hover States Khusus */
+        .social-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-4px);
+        }
+
+        .social-card.linkedin:hover { color: #0077b5; border-color: rgba(0, 119, 181, 0.4); box-shadow: 0 5px 15px rgba(0, 119, 181, 0.15); }
+        .social-card.instagram:hover { color: #f97316; border-color: rgba(249, 115, 22, 0.4); box-shadow: 0 5px 15px rgba(249, 115, 22, 0.15); }
+        .social-card.whatsapp:hover { color: #22c55e; border-color: rgba(34, 197, 94, 0.4); box-shadow: 0 5px 15px rgba(34, 197, 94, 0.15); }
+        .social-card.email:hover { color: #ef4444; border-color: rgba(239, 68, 68, 0.4); box-shadow: 0 5px 15px rgba(239, 68, 68, 0.15); }
+        
+        .social-card:hover i {
+            transform: scale(1.15);
+        }
     </style>
 </head>
 <body>
 
-    <div class="profile-card">
-        <!-- Banner Atas -->
-        <div class="card-header">
-            <!-- Foto Profil -->
-            <div class="profile-img-container">
-                <div class="profile-img-slot">
-                    <!-- Ikon default (user) -->
-                    <i class="fa-solid fa-user"></i>
-                    <!-- Jika ingin memakai foto asli, hapus ikon di atas dan aktifkan tag img di bawah ini -->
-                    <!-- <img src="foto-kamu.jpg" alt="Foto Profil" style="display: block;"> -->
+    <!-- Efek Cahaya Latar Belakang -->
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+
+    <!-- Kartu Profil -->
+    <div class="profile-container">
+        <!-- Bagian Atas Cover -->
+        <div class="cover-photo">
+            <div class="avatar-wrapper">
+                <div class="avatar-slot">
+                    <!-- Default Icon User -->
+                    <i class="fa-solid fa-user-tie"></i>
+                    <!-- Jika ada file foto, hapus ikon di atas dan aktifkan baris di bawah ini -->
+                    <!-- <img src="foto-anda.jpg" alt="Foto Profil" style="display: block;"> -->
                 </div>
             </div>
         </div>
 
-        <!-- Konten Utama -->
-        <div class="card-content">
-            <h1 class="profile-name">Nama Lengkap Anda</h1>
-            <p class="profile-title">Profesi / Jabatan / Instansi</p>
+        <!-- Bagian Isi Utama -->
+        <div class="content-body">
+            <h1 class="name">Nama Lengkap Anda</h1>
+            <div class="badge-title">PROFESI / JABATAN UTAMA</div>
             
-            <p class="profile-bio">
-                Tuliskan deskripsi singkat atau bio profesional Anda di sini. Jelaskan bidang keahlian Anda, fokus pekerjaan, atau visi profesional yang ingin Anda tonjolkan kepada publik.
+            <p class="bio">
+                Tuliskan visi singkat atau deskripsi keahlian profesional Anda di sini. Buat kalimat yang lugas, berwibawa, dan menggambarkan dedikasi tinggi Anda pada bidang pekerjaan yang ditekuni.
             </p>
 
-            <!-- Informasi Data Diri -->
-            <div class="info-list">
-                <div class="info-item">
-                    <i class="fa-solid fa-briefcase"></i>
-                    <div>Bidang: &nbsp;<span>Administrasi & Tata Kelola</span></div>
+            <!-- Grid Data Diri Informasi Penting -->
+            <div class="info-grid">
+                <!-- Baris 1: Instansi/Spesialisasi -->
+                <div class="info-row">
+                    <div class="info-icon">
+                        <i class="fa-solid fa-building-shield"></i>
+                    </div>
+                    <div class="info-text">
+                        <p>Instansi / Bidang</p>
+                        <h4>Administrasi & Tata Kelola Kerja</h4>
+                    </div>
                 </div>
-                <div class="info-item">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <div>Lokasi: &nbsp;<span>Indonesia</span></div>
+
+                <!-- Baris 2: Lokasi -->
+                <div class="info-row">
+                    <div class="info-icon">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </div>
+                    <div class="info-text">
+                        <p>Lokasi Kerja</p>
+                        <h4>Indonesia</h4>
+                    </div>
                 </div>
-                <div class="info-item">
-                    <i class="fa-solid fa-envelope"></i>
-                    <div>Email: &nbsp;<span>emailanda@domain.com</span></div>
+
+                <!-- Baris 3: Email resmi -->
+                <div class="info-row">
+                    <div class="info-icon">
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                    </div>
+                    <div class="info-text">
+                        <p>Surel Kontak</p>
+                        <h4>kontakanda@domain.com</h4>
+                    </div>
                 </div>
             </div>
 
-            <!-- Tombol Media Sosial -->
-            <div class="social-links">
+            <!-- Bagian Tombol Sosial Media Modern -->
+            <div class="social-container">
                 <!-- LinkedIn -->
-                <a href="https://linkedin.com/in/username" target="_blank" class="social-btn linkedin" title="LinkedIn">
-                    <i class="fa-brands fa-linkedin-in"></i>
+                <a href="https://linkedin.com" target="_blank" class="social-card linkedin">
+                    <i class="fa-brands fa-linkedin"></i>
+                    <span>LinkedIn</span>
                 </a>
+                
                 <!-- Instagram -->
-                <a href="https://instagram.com/username" target="_blank" class="social-btn instagram" title="Instagram">
+                <a href="https://instagram.com" target="_blank" class="social-card instagram">
                     <i class="fa-brands fa-instagram"></i>
+                    <span>Instagram</span>
                 </a>
+                
                 <!-- WhatsApp -->
-                <a href="https://wa.me/628123456789" target="_blank" class="social-btn whatsapp" title="WhatsApp">
+                <a href="https://wa.me/62812345678" target="_blank" class="social-card whatsapp">
                     <i class="fa-brands fa-whatsapp"></i>
+                    <span>WhatsApp</span>
                 </a>
-                <!-- Email Terbuka Langsung -->
-                <a href="mailto:emailanda@domain.com" class="social-btn email" title="Kirim Email">
+                
+                <!-- Kirim Email Langsung -->
+                <a href="mailto:kontakanda@domain.com" class="social-card email">
                     <i class="fa-solid fa-envelope"></i>
+                    <span>Email</span>
                 </a>
             </div>
         </div>

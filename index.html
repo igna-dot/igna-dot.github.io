@@ -3,11 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Profil Pribadi</title>
+<title>Personal Profile</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+:root{
+    --primary:#2563eb;
+    --secondary:#7c3aed;
+    --dark:#0f172a;
+    --light:#f8fafc;
+    --glass:rgba(255,255,255,0.1);
+}
+
 *{
     margin:0;
     padding:0;
@@ -16,135 +24,228 @@
 }
 
 body{
-    background: linear-gradient(135deg,#4f46e5,#9333ea);
+    background:
+    radial-gradient(circle at top left,#2563eb,transparent 40%),
+    radial-gradient(circle at bottom right,#7c3aed,transparent 40%),
+    #0f172a;
     min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
+    color:white;
 }
 
 .container{
-    max-width:1000px;
-    width:100%;
-    background:#fff;
-    border-radius:25px;
-    overflow:hidden;
-    box-shadow:0 15px 40px rgba(0,0,0,0.2);
+    width:90%;
+    max-width:1200px;
+    margin:auto;
 }
 
-.header{
+/* Navbar */
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px 0;
+}
+
+.logo{
+    font-size:1.7rem;
+    font-weight:700;
+}
+
+.logo span{
+    color:#60a5fa;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:25px;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+    transition:.3s;
+}
+
+nav ul li a:hover{
+    color:#60a5fa;
+}
+
+/* Hero Section */
+.hero{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:50px;
+    min-height:80vh;
+}
+
+.hero-content{
+    flex:1;
+}
+
+.hero-content h4{
+    color:#60a5fa;
+    margin-bottom:10px;
+}
+
+.hero-content h1{
+    font-size:4rem;
+    line-height:1.1;
+    margin-bottom:20px;
+}
+
+.hero-content p{
+    color:#cbd5e1;
+    line-height:1.8;
+    margin-bottom:30px;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 30px;
     background:linear-gradient(135deg,#2563eb,#7c3aed);
     color:white;
+    text-decoration:none;
+    border-radius:50px;
+    transition:.4s;
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+}
+
+/* Profile Card */
+.profile-card{
+    flex:1;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:30px;
+    padding:40px;
     text-align:center;
-    padding:50px 20px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.3);
 }
 
-.profile-img{
-    width:150px;
-    height:150px;
+.profile-card img{
+    width:180px;
+    height:180px;
     border-radius:50%;
-    border:5px solid white;
     object-fit:cover;
-    margin-bottom:15px;
+    border:5px solid rgba(255,255,255,.2);
 }
 
-.header h1{
-    font-size:2rem;
+.profile-card h2{
+    margin-top:20px;
 }
 
-.header p{
-    opacity:0.9;
+.profile-card p{
+    color:#cbd5e1;
 }
 
-.content{
+/* Data Diri */
+.info-section{
+    margin-top:80px;
+}
+
+.section-title{
+    text-align:center;
+    font-size:2.5rem;
+    margin-bottom:40px;
+}
+
+.info-grid{
     display:grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
 }
 
-.section{
-    padding:35px;
+.info-card{
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(15px);
+    padding:25px;
+    border-radius:20px;
+    transition:.4s;
 }
 
-.section h2{
-    margin-bottom:20px;
-    color:#333;
-    position:relative;
+.info-card:hover{
+    transform:translateY(-8px);
 }
 
-.section h2::after{
-    content:'';
-    width:50px;
-    height:4px;
-    background:#6366f1;
-    display:block;
-    margin-top:8px;
-    border-radius:10px;
+.info-card h3{
+    color:#60a5fa;
+    margin-bottom:10px;
 }
 
-.info-item{
-    margin-bottom:15px;
-}
-
-.info-item strong{
-    color:#4f46e5;
-}
-
-.about{
-    color:#555;
-    line-height:1.8;
+/* Social */
+.social-section{
+    margin:100px 0;
 }
 
 .social-links{
     display:flex;
     flex-wrap:wrap;
-    gap:15px;
-    margin-top:20px;
+    justify-content:center;
+    gap:20px;
 }
 
 .social-links a{
     text-decoration:none;
     color:white;
-    padding:12px 18px;
-    border-radius:12px;
-    transition:.3s;
-    font-weight:500;
-}
-
-.instagram{
-    background:#E1306C;
-}
-
-.facebook{
-    background:#1877F2;
-}
-
-.tiktok{
-    background:#111;
-}
-
-.youtube{
-    background:#FF0000;
-}
-
-.linkedin{
-    background:#0A66C2;
+    padding:15px 30px;
+    border-radius:50px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.15);
+    transition:.4s;
 }
 
 .social-links a:hover{
-    transform:translateY(-4px);
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    transform:translateY(-5px);
 }
 
-.footer{
+/* Stats */
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+    margin:80px 0;
+}
+
+.stat-box{
     text-align:center;
-    padding:20px;
-    background:#f5f5f5;
-    color:#666;
+    padding:30px;
+    border-radius:20px;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(10px);
 }
 
-@media(max-width:768px){
-    .content{
-        grid-template-columns:1fr;
+.stat-box h2{
+    font-size:2.5rem;
+    color:#60a5fa;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:30px 0;
+    color:#94a3b8;
+}
+
+@media(max-width:900px){
+    .hero{
+        flex-direction:column;
+        text-align:center;
+        padding:50px 0;
+    }
+
+    .hero-content h1{
+        font-size:3rem;
+    }
+
+    nav{
+        flex-direction:column;
+        gap:20px;
     }
 }
 </style>
@@ -153,79 +254,120 @@ body{
 
 <div class="container">
 
-    <div class="header">
-        <img src="https://via.placeholder.com/150" alt="Foto Profil" class="profile-img">
+<nav>
+    <div class="logo">My<span>Profile</span></div>
 
-        <h1>IGNA</h1>
-        <p>Web Developer | Content Creator | Freelancer</p>
+    <ul>
+        <li><a href="#">Beranda</a></li>
+        <li><a href="#">Tentang</a></li>
+        <li><a href="#">Profil</a></li>
+        <li><a href="#">Kontak</a></li>
+    </ul>
+</nav>
+
+<section class="hero">
+
+    <div class="hero-content">
+        <h4>HALO, SAYA</h4>
+
+        <h1>Nama Lengkap Anda</h1>
+
+        <p>
+            Seorang profesional yang memiliki passion di bidang teknologi,
+            pengembangan web, desain digital, dan inovasi kreatif.
+            Saya senang membangun solusi modern yang bermanfaat serta
+            terus belajar untuk berkembang di era digital.
+        </p>
+
+        <a href="#" class="btn">Hubungi Saya</a>
     </div>
 
-    <div class="content">
+    <div class="profile-card">
+        <img src="https://via.placeholder.com/300" alt="Profile">
 
-        <div class="section">
-            <h2>Data Diri</h2>
+        <h2>Nama Anda</h2>
+        <p>Web Developer • Designer • Freelancer</p>
+    </div>
 
-            <div class="info-item">
-                <strong>Nama:</strong> Igna Ighsandra A.
-            </div>
+</section>
 
-            <div class="info-item">
-                <strong>Tempat, Tanggal Lahir:</strong> Malang, 01 Januari 1994
-            </div>
+<section class="stats">
 
-            <div class="info-item">
-                <strong>Alamat:</strong> Klaten, Indonesia
-            </div>
+    <div class="stat-box">
+        <h2>50+</h2>
+        <p>Project Selesai</p>
+    </div>
 
-            <div class="info-item">
-                <strong>Email:</strong> ignaighsandra@gmail.com
-            </div>
+    <div class="stat-box">
+        <h2>5+</h2>
+        <p>Tahun Pengalaman</p>
+    </div>
 
-            <div class="info-item">
-                <strong>Telepon:</strong> +62 81287171682
-            </div>
+    <div class="stat-box">
+        <h2>100%</h2>
+        <p>Komitmen Kerja</p>
+    </div>
+
+</section>
+
+<section class="info-section">
+
+    <h2 class="section-title">Data Diri</h2>
+
+    <div class="info-grid">
+
+        <div class="info-card">
+            <h3>Nama Lengkap</h3>
+            <p>Nama Lengkap Anda</p>
         </div>
 
-        <div class="section">
-            <h2>Tentang Saya</h2>
+        <div class="info-card">
+            <h3>Tempat Lahir</h3>
+            <p>Kota Anda</p>
+        </div>
 
-            <p class="about">
-                Halo! Saya adalah seseorang yang memiliki minat di bidang teknologi,
-                desain, dan pengembangan web. Saya senang mempelajari hal baru,
-                membuat proyek kreatif, dan berbagi pengalaman melalui media sosial.
-                Saat ini saya terus mengembangkan kemampuan untuk menciptakan solusi
-                digital yang bermanfaat dan menarik.
-            </p>
+        <div class="info-card">
+            <h3>Email</h3>
+            <p>email@domain.com</p>
+        </div>
 
-            <div class="social-links">
-                <a href="https://instagram.com/username" target="_blank" class="instagram">
-                    Instagram
-                </a>
+        <div class="info-card">
+            <h3>Alamat</h3>
+            <p>Jambi, Indonesia</p>
+        </div>
 
-                <a href="https://facebook.com/username" target="_blank" class="facebook">
-                    Facebook
-                </a>
+        <div class="info-card">
+            <h3>Telepon</h3>
+            <p>+62 xxx xxxx xxxx</p>
+        </div>
 
-                <a href="https://tiktok.com/@username" target="_blank" class="tiktok">
-                    TikTok
-                </a>
-
-                <a href="https://youtube.com/@username" target="_blank" class="youtube">
-                    YouTube
-                </a>
-
-                <a href="https://linkedin.com/in/username" target="_blank" class="linkedin">
-                    LinkedIn
-                </a>
-            </div>
-
+        <div class="info-card">
+            <h3>Pekerjaan</h3>
+            <p>Web Developer</p>
         </div>
 
     </div>
 
-    <div class="footer">
-        © 2026 | Dibuat dengan ❤️ oleh Nama Anda
+</section>
+
+<section class="social-section">
+
+    <h2 class="section-title">Media Sosial</h2>
+
+    <div class="social-links">
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">Facebook</a>
+        <a href="#">YouTube</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">GitHub</a>
     </div>
+
+</section>
+
+<footer>
+    © 2026 | Personal Portfolio & Profile Website
+</footer>
 
 </div>
 

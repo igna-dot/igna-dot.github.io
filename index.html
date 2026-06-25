@@ -1,340 +1,262 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil Eksklusif & Profesional</title>
-    <!-- Google Fonts & Font Awesome Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profil Pribadi</title>
 
-        body {
-            /* Latar belakang gradasi premium yang elegan */
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-            color: #f8fafc;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 30px 20px;
-            overflow-x: hidden;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        /* Dekorasi Lingkaran Cahaya di Latar Belakang */
-        .bg-glow {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(0,0,0,0) 70%);
-            top: 10%;
-            left: 15%;
-            z-index: 1;
-        }
-        .bg-glow-2 {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, rgba(0,0,0,0) 70%);
-            bottom: 10%;
-            right: 15%;
-            z-index: 1;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
 
-        /* Card Utama (Glassmorphism) */
-        .profile-container {
-            position: relative;
-            z-index: 2;
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            width: 100%;
-            max-width: 480px;
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 
-                        inset 0 1px 1px rgba(255, 255, 255, 0.1);
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+body{
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+}
 
-        .profile-container:hover {
-            transform: translateY(-8px);
-            border-color: rgba(212, 175, 55, 0.3);
-            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.4), 
-                        0 0 30px rgba(212, 175, 55, 0.1);
-        }
+.container{
+    width:100%;
+    max-width:1100px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:25px;
+    overflow:hidden;
+    box-shadow:0 20px 50px rgba(0,0,0,0.3);
+}
 
-        /* Bagian Atas / Cover */
-        .cover-photo {
-            height: 120px;
-            background: linear-gradient(90deg, #1e3a8a 0%, #0d9488 100%);
-            position: relative;
-        }
+.header{
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    color:white;
+    padding:50px;
+    text-align:center;
+}
 
-        /* Foto Profil Lingkaran */
-        .avatar-wrapper {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: rgba(30, 41, 59, 1);
-            position: absolute;
-            left: 50%;
-            bottom: -60px;
-            transform: translateX(-50%);
-            padding: 4px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
+.profile-img{
+    width:160px;
+    height:160px;
+    border-radius:50%;
+    border:5px solid rgba(255,255,255,0.3);
+    object-fit:cover;
+    margin-bottom:20px;
+}
 
-        .avatar-slot {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #94a3b8;
-            border: 2px solid #d4af37; /* Aksen Emas/Gold */
-            overflow: hidden;
-        }
+.header h1{
+    font-size:36px;
+    margin-bottom:10px;
+}
 
-        .avatar-slot i {
-            font-size: 3rem;
-        }
+.header p{
+    opacity:0.9;
+    font-size:18px;
+}
 
-        .avatar-slot img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: none; /* Aktifkan (block) jika file gambar sudah dimasukkan */
-        }
+.content{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+    padding:40px;
+}
 
-        /* Konten */
-        .content-body {
-            padding: 80px 35px 40px 35px;
-            text-align: center;
-        }
+.card{
+    background:rgba(255,255,255,0.05);
+    border-radius:20px;
+    padding:25px;
+    color:white;
+    border:1px solid rgba(255,255,255,0.08);
+}
 
-        .name {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #ffffff;
-            letter-spacing: -0.5px;
-            margin-bottom: 6px;
-        }
+.card h2{
+    margin-bottom:20px;
+    color:#60a5fa;
+    border-left:5px solid #60a5fa;
+    padding-left:12px;
+}
 
-        .badge-title {
-            display: inline-block;
-            padding: 5px 14px;
-            background: rgba(212, 175, 55, 0.1);
-            color: #d4af37;
-            font-size: 0.8rem;
-            font-weight: 600;
-            border-radius: 20px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            letter-spacing: 0.5px;
-            margin-bottom: 20px;
-        }
+.info-item{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:15px;
+    padding-bottom:10px;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
 
-        .bio {
-            font-size: 0.9rem;
-            color: #94a3b8;
-            line-height: 1.6;
-            margin-bottom: 28px;
-        }
+.label{
+    font-weight:600;
+    color:#cbd5e1;
+}
 
-        /* Data Diri Grid Elegan */
-        .info-grid {
-            background: rgba(15, 23, 42, 0.4);
-            border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            text-align: left;
-        }
+.value{
+    color:white;
+}
 
-        .info-row {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
+.about{
+    line-height:1.8;
+    color:#e2e8f0;
+}
 
-        .info-row:last-child {
-            margin-bottom: 0;
-        }
+.social-container{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
 
-        .info-icon {
-            width: 36px;
-            height: 36px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #d4af37;
-            margin-right: 15px;
-            font-size: 0.95rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
+.social{
+    text-decoration:none;
+    color:white;
+    background:rgba(255,255,255,0.08);
+    padding:15px;
+    border-radius:15px;
+    text-align:center;
+    transition:0.3s;
+    font-weight:500;
+}
 
-        .info-text p {
-            font-size: 0.75rem;
-            color: #64748b;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+.social:hover{
+    transform:translateY(-5px);
+    background:#2563eb;
+}
 
-        .info-text h4 {
-            font-size: 0.9rem;
-            color: #e2e8f0;
-            font-weight: 500;
-        }
+.footer{
+    text-align:center;
+    color:#cbd5e1;
+    padding:20px;
+    border-top:1px solid rgba(255,255,255,0.08);
+}
 
-        /* Komponen Media Sosial Tradisional & Modern */
-        .social-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-        }
+@media(max-width:768px){
+    .content{
+        grid-template-columns:1fr;
+    }
 
-        .social-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 14px 0;
-            border-radius: 14px;
-            color: #cbd5e1;
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .social-card i {
-            font-size: 1.3rem;
-            transition: transform 0.3s ease;
-        }
-
-        /* Hover States Khusus */
-        .social-card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateY(-4px);
-        }
-
-        .social-card.linkedin:hover { color: #0077b5; border-color: rgba(0, 119, 181, 0.4); box-shadow: 0 5px 15px rgba(0, 119, 181, 0.15); }
-        .social-card.instagram:hover { color: #f97316; border-color: rgba(249, 115, 22, 0.4); box-shadow: 0 5px 15px rgba(249, 115, 22, 0.15); }
-        .social-card.whatsapp:hover { color: #22c55e; border-color: rgba(34, 197, 94, 0.4); box-shadow: 0 5px 15px rgba(34, 197, 94, 0.15); }
-        .social-card.email:hover { color: #ef4444; border-color: rgba(239, 68, 68, 0.4); box-shadow: 0 5px 15px rgba(239, 68, 68, 0.15); }
-        
-        .social-card:hover i {
-            transform: scale(1.15);
-        }
-    </style>
+    .header h1{
+        font-size:28px;
+    }
+}
+</style>
 </head>
+
 <body>
 
-    <!-- Efek Cahaya Latar Belakang -->
-    <div class="bg-glow"></div>
-    <div class="bg-glow-2"></div>
+<div class="container">
 
-    <!-- Kartu Profil -->
-    <div class="profile-container">
-        <!-- Bagian Atas Cover -->
-        <div class="cover-photo">
-            <div class="avatar-wrapper">
-                <div class="avatar-slot">
-                    <!-- Default Icon User -->
-                    <i class="fa-solid fa-user-tie"></i>
-                    <!-- Jika ada file foto, hapus ikon di atas dan aktifkan baris di bawah ini -->
-                    <!-- <img src="foto-anda.jpg" alt="Foto Profil" style="display: block;"> -->
-                </div>
-            </div>
-        </div>
+    <div class="header">
+        <img src="https://via.placeholder.com/160" alt="Foto Profil" class="profile-img">
 
-        <!-- Bagian Isi Utama -->
-        <div class="content-body">
-            <h1 class="name">Igna Ighsandra</h1>
-            <div class="badge-title">PNS Kemhan</div>
-            
-            <p class="bio">
-                PNS Kementerian Pertahanan yang berkomitmen mengabdi dengan integritas, profesionalisme, dan dedikasi tinggi dalam mendukung penyelenggaraan pertahanan negara serta pelayanan publik yang akuntabel dan berkualitas.
-            </p>
-
-            <!-- Grid Data Diri Informasi Penting -->
-            <div class="info-grid">
-                <!-- Baris 1: Instansi/Spesialisasi -->
-                <div class="info-row">
-                    <div class="info-icon">
-                        <i class="fa-solid fa-building-shield"></i>
-                    </div>
-                    <div class="info-text">
-                        <p>Instansi / Bidang</p>
-                        <h4>Staf Rencara Program dan Anggaran</h4>
-                    </div>
-                </div>
-
-                <!-- Baris 2: Lokasi -->
-                <div class="info-row">
-                    <div class="info-icon">
-                        <i class="fa-solid fa-map-location-dot"></i>
-                    </div>
-                    <div class="info-text">
-                        <p>Lokasi Kerja</p>
-                        <h4>Palembang</h4>
-                    </div>
-                </div>
-
-                <!-- Baris 3: Email resmi -->
-                <div class="info-row">
-                    <div class="info-icon">
-                        <i class="fa-solid fa-envelope-open-text"></i>
-                    </div>
-                    <div class="info-text">
-                        <p>Surel Kontak</p>
-                        <h4>ignaighsandra@gmail.com</h4>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bagian Tombol Sosial Media Modern -->
-            <div class="social-container">
-                <!-- LinkedIn -->
-                <a href="https://linkedin.com" target="_blank" class="social-card linkedin">
-                    <i class="fa-brands fa-linkedin"></i>
-                    <span>LinkedIn</span>
-                </a>
-                
-                <!-- Instagram -->
-                <a href="https://instagram.com" target="_blank" class="social-card instagram">
-                    <i class="fa-brands fa-instagram"></i>
-                    <span>Instagram</span>
-                </a>
-                
-                <!-- WhatsApp -->
-                <a href="https://wa.me/6281287171682" target="_blank" class="social-card whatsapp">
-                    <i class="fa-brands fa-whatsapp"></i>
-                    <span>WhatsApp</span>
-                </a>
-                
-                <!-- Kirim Email Langsung -->
-                <a href="mailto:ignaighsandra@gmail.com" class="social-card email">
-                    <i class="fa-solid fa-envelope"></i>
-                    <span>Email</span>
-                </a>
-            </div>
-        </div>
+        <h1>Nama Lengkap Anda</h1>
+        <p>Web Developer | Designer | Content Creator</p>
     </div>
+
+    <div class="content">
+
+        <div class="card">
+            <h2>Data Diri</h2>
+
+            <div class="info-item">
+                <span class="label">Nama</span>
+                <span class="value">Nama Lengkap</span>
+            </div>
+
+            <div class="info-item">
+                <span class="label">Tempat Lahir</span>
+                <span class="value">Jambi</span>
+            </div>
+
+            <div class="info-item">
+                <span class="label">Tanggal Lahir</span>
+                <span class="value">01 Januari 2000</span>
+            </div>
+
+            <div class="info-item">
+                <span class="label">Email</span>
+                <span class="value">email@email.com</span>
+            </div>
+
+            <div class="info-item">
+                <span class="label">Telepon</span>
+                <span class="value">08xxxxxxxxxx</span>
+            </div>
+
+            <div class="info-item">
+                <span class="label">Alamat</span>
+                <span class="value">Jambi, Indonesia</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Tentang Saya</h2>
+
+            <p class="about">
+                Saya adalah seseorang yang memiliki minat dalam bidang
+                teknologi, pengembangan web, desain digital, dan inovasi.
+                Berkomitmen untuk terus belajar, berkembang, dan memberikan
+                kontribusi terbaik dalam setiap pekerjaan maupun proyek yang
+                dikerjakan. Memiliki kemampuan bekerja secara individu maupun
+                dalam tim dengan semangat profesionalisme dan integritas.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>Media Sosial</h2>
+
+            <div class="social-container">
+                <a href="#" class="social">📘 Facebook</a>
+                <a href="#" class="social">📸 Instagram</a>
+                <a href="#" class="social">🎵 TikTok</a>
+                <a href="#" class="social">💼 LinkedIn</a>
+                <a href="#" class="social">🐦 X / Twitter</a>
+                <a href="#" class="social">▶ YouTube</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Keahlian</h2>
+
+            <div class="info-item">
+                <span class="label">HTML & CSS</span>
+                <span class="value">95%</span>
+            </div>
+
+            <div class="info-item">
+                <span class="label">JavaScript</span>
+                <span class="value">90%</span>
+            </div>
+
+            <div class="info-item">
+                <span class="label">UI/UX Design</span>
+                <span class="value">85%</span>
+            </div>
+
+            <div class="info-item">
+                <span class="label">Microsoft Office</span>
+                <span class="value">95%</span>
+            </div>
+
+            <div class="info-item">
+                <span class="label">Manajemen Data</span>
+                <span class="value">90%</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+        © 2026 - Profil Pribadi | Dibuat dengan HTML & CSS
+    </div>
+
+</div>
 
 </body>
 </html>
